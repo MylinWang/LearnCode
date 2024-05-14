@@ -103,4 +103,17 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.gelin.demo.model.pojo.User">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+<select id="checkUsernameAndPassword" parameterType="map" resultType="com.gelin.demo.model.pojo.User">
+    select
+  <include refid="Base_Column_List" />
+  from user
+  where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+</select>
 </mapper>
